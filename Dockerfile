@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN ["python", "main.py", "--csv", "--parquet"]
+CMD ["python", "main.py", "--csv", "--parquet"]

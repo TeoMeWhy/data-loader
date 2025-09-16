@@ -1,0 +1,106 @@
+{
+    "points": {
+        "name": "points",
+        "kaggle": {
+            "title": "TeoMeWhy Loyalty System",
+            "id": "teocalvo/teomewhy-loyalty-system",
+            "licenses": [
+                {
+                    "name": "CC0-1.0"
+                }
+            ]
+        },
+        "source": {
+            "name": "MYSQL_URI",
+            "engine": "mysql"
+        },
+        "target": {
+            "name": "POINTS_URI",
+            "engine": "sqlite"
+        },
+        "tables": [
+            {
+                "name": "transacoes",
+                "query": "points_transactions.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "transacao_produto",
+                "query": "points_transaction_products.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "clientes",
+                "query": "points_customers.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "produtos",
+                "query": "points_products.sql",
+                "if_exists": "replace"
+            }
+        ]
+    },
+    "education": {
+        "name": "education",
+                "kaggle": {
+            "title": "TeoMeWhy Education Platform",
+            "id": "teocalvo/teomewhy-education-platform",
+            "licenses": [
+                {
+                    "name": "CC0-1.0"
+                }
+            ]
+        },
+        "source": {
+            "name": "MYSQL_URI",
+            "engine": "mysql"
+        },
+        "target": {
+            "name": "EDUCATION_URI",
+            "engine": "sqlite"
+        },
+        "tables": [
+            {
+                "name": "cursos",
+                "query": "education_courses.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "cursos_episodios_completos",
+                "query": "education_courses_episodes_complete.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "cursos_episodios",
+                "query": "education_courses_episodes.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "habilidades_cargos",
+                "query": "education_role_skills.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "habilidades",
+                "query": "education_skills.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "usuarios_tmw",
+                "query": "education_tmw_user.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "recompensas_usuarios",
+                "query": "education_user_rewards.sql",
+                "if_exists": "replace"
+            },
+            {
+                "name": "habilidades_usuarios",
+                "query": "education_user_skills.sql",
+                "if_exists": "replace"
+            }
+        ]
+    }
+}

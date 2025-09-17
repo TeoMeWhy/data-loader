@@ -27,7 +27,8 @@ class S3Uploader:
     def run(self):
         for file in os.listdir(f"data/{self.name}"):
             if file.endswith(".parquet"):
-                self.upload_file(f"data/{self.name}/{file}", f"{self.name}/{file}")
+                file_name = file.replace(".parquet", "")
+                self.upload_file(f"data/{self.name}/{file}", f"{self.name}/{file_name}/{file}")
 
 
 def execute():

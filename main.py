@@ -4,6 +4,7 @@ import time
 
 import kaggle_uploader
 import source_loader
+import s3_uploader
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,6 +20,8 @@ while True:
     
     source_loader.execute(csv=args.csv, parquet=args.parquet)
     kaggle_uploader.execute()
+    s3_uploader.execute()
+    
 
     logging.info("Process completed, sleeping for 6 hours")
     time.sleep(60*60*6)

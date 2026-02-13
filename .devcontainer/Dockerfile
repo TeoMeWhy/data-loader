@@ -1,6 +1,5 @@
-FROM python:3.13.7
-
-WORKDIR /app
+# Use the official Python image from the Docker Hub
+FROM python:3.13
 
 # Install dependencies
 RUN apt-get update && \
@@ -15,12 +14,14 @@ RUN apt-get update && \
 ENV JAVA_HOME=/usr/lib/jvm/temurin-11-jdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-# Install Nekt SDK
-RUN pip install git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
+# Install Jupyter and Nekt SDK
+RUN pip install jupyter python-dotenv pandas sqlalchemy git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Expose port 8888 for Jupyter Notebook
+EXPOSE 8888
 
-COPY . .
+# Set the working directory
+WORKDIR /workspace
 
-CMD ["python", "main.py", "--csv", "--parquet"]
+# Command to run Jupyter Notebook
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]

@@ -39,5 +39,14 @@ while True:
         renames={"idcliente": "id"}
     )
 
+    logging.info("       Enviando f1_driver...")
+    nekt_to_mysql(
+        layer_name="Silver",
+        t_nekt="fs_f1_driver_all",
+        t_fs="f1_driver",
+        schema="feature_store",
+        renames={}
+    )
+
     logging.info("Process completed, sleeping for 4 hours")
     time.sleep(60*60*4)

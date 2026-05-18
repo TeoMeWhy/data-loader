@@ -17,6 +17,8 @@ ENV PATH=$JAVA_HOME/bin:$PATH
 # Install Jupyter and Nekt SDK
 RUN pip install jupyter python-dotenv pandas sqlalchemy git+https://github.com/nektcom/nekt-sdk-py.git#egg=nekt-sdk
 
+RUN pip install pymysql
+
 # Expose port 8888 for Jupyter Notebook
 EXPOSE 8888
 

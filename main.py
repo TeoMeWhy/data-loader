@@ -4,8 +4,6 @@ import time
 
 import kaggle_uploader
 import source_loader
-import s3_uploader
-from nekt_loader import nekt_to_mysql
 
 logging.basicConfig(level=logging.INFO)
 
@@ -24,29 +22,6 @@ while True:
 
     logging.info("   Enviando dados para o Kaggle...")
     kaggle_uploader.execute()
-
-    logging.info("   Enviando dados para o S3...")
-    s3_uploader.execute()
-    
-    logging.info("   Enviando dados para a feature store do MySQL...")
-
-    logging.info("       Enviando tmw_user...")
-    nekt_to_mysql(
-        layer_name="Silver",
-        t_nekt="fs_all",
-        t_fs="tmw_user",
-        schema="feature_store",
-        renames={"idcliente": "id"},
-    )
-
-    logging.info("       Enviando f1_driver...")
-    nekt_to_mysql(
-        layer_name="Silver",
-        t_nekt="fs_f1_driver_all",
-        t_fs="f1_driver",
-        schema="feature_store",
-        renames={'id': 'id'}
-    )
 
     logging.info("Process completed, sleeping for 4 hours")
     time.sleep(60*60*4)
